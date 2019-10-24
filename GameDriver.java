@@ -9,7 +9,6 @@ import java.security.SecureRandom;
 
 public class GameDriver
 {
-	SecureRandom rand = new SecureRandom();
 	
 	
 	public static void main(String [] args)
@@ -31,18 +30,15 @@ public class GameDriver
 
 		//Create a 3 Bad guys with strength 5 and hit points 200
 		
-		Baddy b1 = new Baddy("Goblin1", f1, 300, 5);
+		Baddy b1 = new Baddy("Goblin1", f1, 300, 10);
 		//Baddy b2 = new Baddy("Goblin2", f1, 200, 5);
 		//Baddy b3 = new Baddy("Goblin3", f1, 200, 5);
 		Weapon w1 = new Weapon(30, 40);
 		
-		
-		//System.out.println(h1.getStrength());
-		//System.out.println(h1.getAttack());
 		System.out.println("Choose your weapon!");
 		System.out.println("1.) Sword! Attack: 10 Durability: 20");
 		
-		
+		System.out.print("Your choice : ");
 		int x = sc.nextInt();
 		System.out.println();
 		switch(x)
@@ -61,6 +57,7 @@ public class GameDriver
 	
 	public static void fight(Hero h1, Baddy b1)
 	{
+		SecureRandom rand = new SecureRandom();
 		Scanner sc = new Scanner(System.in);
 	
 		//Battle until the bad guys hit points are 0 or lower
@@ -73,22 +70,30 @@ public class GameDriver
 			switch(x)
 			{
 				case 1:
-					b1.takeDamage(h1.getStrength() + h1.getAttack());
+					b1.takeDamage(h1.getStrength() + rand.nextInt(h1.getAttack()));
+					System.out.print("Monster Health : ");
 					System.out.println(b1.getHitPoints());
+					h1.takeDamage(rand.nextInt(b1.getStrength()+1));
+					System.out.print("Hero Health : ");
+					System.out.println(h1.getHitPoints());
 					break;
 				case 2: 
 					b1.takeDamage(h1.getStrength());
+					System.out.print("Monster Health : ");
 					System.out.println(b1.getHitPoints());
+					h1.takeDamage(rand.nextInt(b1.getStrength()+1));
+					System.out.print("Hero Health : ");
+					System.out.println(h1.getHitPoints());
+					break;
+				default :
+					System.out.println("Retry...");
+					System.out.print("Monster Health : ");
+					System.out.println(b1.getHitPoints());
+					System.out.print("Hero Health : ");
+					System.out.println(h1.getHitPoints());
 					break;
 			}
-			
-			
-			
-			//bad guy attack if it is still alive
-			//if (b1.isAlive())
-			//{
-			//	h1.takeDamage(b1.getStrength());
-			//}
+
 		}
 		
 		//show the outcome of the battle

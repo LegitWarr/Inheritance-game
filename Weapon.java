@@ -17,5 +17,4 @@ public class Weapon extends Object
 	
 	public int setDurability()
 	{return durability;}
-	
 }

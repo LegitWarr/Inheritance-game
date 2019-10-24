@@ -57,7 +57,7 @@ public class Character extends Object
 	
 	public int getStrength()
 	{return strength;}
-	
+
 	public void setAttack(int attack)
 	{this.attack=attack;}
 	
