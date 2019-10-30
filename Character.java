@@ -7,6 +7,7 @@ public class Character extends Object
 {
 	protected int hitPoints; 
 	protected int strength; 
+	protected int durability;
 	protected enum STATUS {DEAD, ALIVE};
 	protected STATUS status;
 	public int attack;
@@ -63,6 +64,12 @@ public class Character extends Object
 	
 	public int getAttack()
 	{return attack;}
+	
+	public void setDurability(int durability)
+	{this.durability=durability;}
+	
+	public int getDurability()
+	{return durability;}
 	
 	//So we can test our creation
 	public void showStats()
